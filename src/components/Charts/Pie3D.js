@@ -14,9 +14,9 @@ const ChartComponent = ({ data }) => {
     dataSource: {
       chart: {
         caption: 'Languages',
-        theme: 'fusion',
         decimals: 0,
         pieRadius: '45%',
+        theme: 'fusion',
       },
       data: data,
     },

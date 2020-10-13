@@ -33,6 +33,7 @@ const Repos = () => {
 
   // Most stars per language
   const mostPopular = Object.values(languages)
+
     .sort((a, b) => {
       return b.stars - a.stars
     })

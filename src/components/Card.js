@@ -1,27 +1,47 @@
-import React from 'react';
-import { GithubContext } from '../context/context';
-import styled from 'styled-components';
-import { MdBusiness, MdLocationOn, MdLink } from 'react-icons/md';
+import React from 'react'
+import { GithubContext } from '../context/context'
+import styled from 'styled-components'
+import { MdBusiness, MdLocationOn, MdLink } from 'react-icons/md'
 const Card = () => {
-  const {githubUser} = React.useContext(GithubContext)
-  const {avatar_url, html_url, name, company, bio, blog,location, twitter_username} = githubUser
-  return <Wrapper>
-    <header>
-      <img src={avatar_url} alt={name}/>
-      <div>
-        <h4>{name}</h4>
-        <p>@{twitter_username || 'johndoe'}</p>
+  const { githubUser } = React.useContext(GithubContext)
+  const {
+    avatar_url,
+    html_url,
+    name,
+    company,
+    bio,
+    blog,
+    location,
+    twitter_username,
+  } = githubUser
+  return (
+    <Wrapper>
+      <header>
+        <img src={avatar_url} alt={name} />
+        <div>
+          <h4>{name}</h4>
+          <p>@{twitter_username || 'johndoe'}</p>
+        </div>
+        <a href={html_url}>follow</a>
+      </header>
+      <p className='bio'>{bio}</p>
+      <div className='links'>
+        <p>
+          <MdBusiness></MdBusiness>
+          {company}
+        </p>
+        <p>
+          <MdLocationOn></MdLocationOn>
+          {location || 'earth'}
+        </p>
+        <a href={'https://' + blog}>
+          <MdLink></MdLink>
+          {blog}
+        </a>
       </div>
-      <a href={html_url}>follow</a>
-    </header>
-    <p className="bio">{bio}</p>
-    <div className="links">
-      <p><MdBusiness></MdBusiness>{company}</p>
-      <p><MdLocationOn></MdLocationOn>{location || 'earth'}</p>
-      <a href={"https://" + blog}><MdLink></MdLink>{blog}</a>
-    </div>
-  </Wrapper>;
-};
+    </Wrapper>
+  )
+}
 const Wrapper = styled.article`
   background: var(--clr-white);
   padding: 1.5rem 2rem;
@@ -101,5 +121,23 @@ const Wrapper = styled.article`
       }
     }
   }
-`;
-export default Card;
+
+  @media (max-width: 374px) {
+    padding: 1.5rem 0.5rem;
+    margin-bottom: 50px;
+
+    header {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      align-items: center;
+      column-gap: 1rem;
+      margin-bottom: 1rem;
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+      }
+    }
+  }
+`
+export default Card

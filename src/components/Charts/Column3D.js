@@ -7,7 +7,7 @@ import FusionTheme from 'fusioncharts/themes/fusioncharts.theme.fusion'
 ReactFC.fcRoot(FusionCharts, Chart, FusionTheme)
 const ChartComponent = ({ data }) => {
   const chartConfigs = {
-    type: 'column3d',
+    type: 'column2d',
     width: '100%',
     height: '400',
     dataFormat: 'json',
@@ -18,6 +18,7 @@ const ChartComponent = ({ data }) => {
         xAxisName: 'Repos',
         xAxisNameFontSize: '16px',
         yAxisNameFontSize: '16px',
+        theme: 'fusion',
       },
       data: data,
     },
